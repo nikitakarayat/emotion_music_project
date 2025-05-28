@@ -1,0 +1,10 @@
+numpy==1.24.3
+pygame==2.6.1
+opencv-python==4.7.0.72
+matplotlib==3.7.1
+pillow==9.5.0
+pydub==0.25.1
+SpeechRecognition==3.8.1
+tensorflow==2.13.0
+keras==2.13.1
+deepface==0.0.76
