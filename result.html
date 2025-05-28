@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Emotion Result</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1 id="emotionText">Detected Emotion: <span id="emotionVal"></span></h1>
+    <div class="emoji-container" id="emojis"></div>
+    
+    <script>
+    let detectedEmotion = null;
+    let audio = null;
+
+    window.onload = function () {
+        const urlParams = new URLSearchParams(window.location.search);
+        detectedEmotion = urlParams.get('emotion');
+        document.getElementById('emotionVal').textContent = detectedEmotion;
+
+        const emojiMap = {
+            happy: '😀',
+            sad: '😢',
+            angry: '😠',
+            frustrated: '😤',
+            fear: '😱',
+            surprised: '😮'
+        };
+
+        let emojis = '';
+        for (let i = 0; i < 1000; i++) {
+            emojis += emojiMap[detectedEmotion] || '❓';
+        }
+        document.getElementById('emojis').textContent = emojis;
+
+        const emotionMusicMap = {
+            happy: "happy.mp3",
+            sad: "sad.mp3",
+            angry: "angry.mp3",
+            frustrated: "frustrated.mp3",
+            fear: "fear.mp3",
+            surprised: "surprised.mp3"
+        };
+
+        const songFile = emotionMusicMap[detectedEmotion];
+        if (songFile) {
+            audio = new Audio("static/music/" + songFile);
+        } else {
+            console.warn("No music file mapped for emotion:", detectedEmotion);
+        }
+    };
+
+    function playEmotionMusic() {
+        if (audio) {
+            audio.play().catch(e => console.log("Audio play error:", e));
+        } else {
+            alert("No audio loaded.");
+        }
+    }
+</script>
+
+</body>
+</html>

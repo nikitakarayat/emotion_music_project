@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emotion Music Detector</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <video autoplay muted loop id="bgVideo"></video>
+    <header>
+        <h1>Hello! Let's detect your mood 😄</h1>
+        <button id="mode-toggle">🌙 Toggle Dark/Light Mode</button>
+    </header>
+
+    <main>
+        <section id="emotion-tips">Tip: Feeling down? Let music cheer you up!</section>
+
+        <section>
+            <label for="volumeSlider">🔊 Volume:</label>
+            <input type="range" id="volumeSlider" min="0" max="1" step="0.01" value="1">
+        </section>
+
+        <div class="container">
+            <h2>Emotion Music Detector</h2>
+
+            <div class="video-container">
+                <video id="video" autoplay></video>
+                <canvas id="canvas" style="display: none;"></canvas>
+            </div>
+
+            <div class="controls">
+                <button id="capture">Detect Emotion</button>
+                <button id="pause">Pause Music</button>
+                <button id="resume">Resume Music</button>
+                <button id="voiceCommand">🎤 Voice Command</button>
+            </div>
+
+            <div id="mood-display">
+                <p id="result">Mood: Not detected</p>
+            </div>
+
+            <audio id="musicPlayer" controls style="display: none;">
+                <source id="musicSource" src="" type="audio/mpeg">
+                Your browser does not support the audio element.
+            </audio>
+            <iframe id="ytFrame" width="100%" height="315" style="display:none;" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+        </div>
+
+        <div id="emoji-container"></div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
